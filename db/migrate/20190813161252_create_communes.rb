@@ -3,9 +3,9 @@ class CreateCommunes < ActiveRecord::Migration[5.0]
     create_table :communes do |t|
       t.string :name
       t.string :code_insee
-      t.references :intercommunality, foreign_key: true
 
       t.timestamps
     end
+    add_reference(:communes, :intercommunality, index: true) 
   end
 end

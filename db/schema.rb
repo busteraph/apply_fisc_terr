@@ -12,30 +12,30 @@
 
 ActiveRecord::Schema.define(version: 20190815170140) do
 
-  create_table "communes", force: :cascade do |t|
+  create_table "communes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "code_insee"
-    t.integer  "intercommunality_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.index ["intercommunality_id"], name: "index_communes_on_intercommunality_id"
+    t.integer  "intercommunality_id"
+    t.index ["intercommunality_id"], name: "index_communes_on_intercommunality_id", using: :btree
   end
 
-  create_table "intercommunalities", force: :cascade do |t|
+  create_table "intercommunalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "siren"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "streets", force: :cascade do |t|
+  create_table "streets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.integer  "from"
     t.integer  "to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "commune_id"
-    t.index ["commune_id"], name: "index_streets_on_commune_id"
+    t.index ["commune_id"], name: "index_streets_on_commune_id", using: :btree
   end
 
 end
