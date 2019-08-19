@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190819143447) do
+ActiveRecord::Schema.define(version: 20190819144934) do
 
   create_table "communes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 20190819143447) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "intercommunality_id"
+    t.integer  "street_id"
     t.index ["intercommunality_id"], name: "index_communes_on_intercommunality_id", using: :btree
+    t.index ["street_id"], name: "index_communes_on_street_id", using: :btree
   end
 
   create_table "intercommunalities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

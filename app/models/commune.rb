@@ -3,5 +3,5 @@ class Commune < ApplicationRecord
   has_many :streets
 
   validates  :name, :code_insee, presence: :true
-  validates  :code_insee, presence: :true, format: { with: /\d{4,}/ }
+  validates  :code_insee, presence: :true, format: { with: /\A\d{5}\z/ }
 end
