@@ -7,4 +7,16 @@ class Intercommunality < ApplicationRecord
 
   validates  :form, inclusion: { in: %w(ca cu cc met) }
 
+  before_save :slug 
+
+  def communes_hash
+    c_h = {}
+    self.communes.each { |com|  c_h[com.code_insee] = com.name }
+    c_h
+  end  
+
+  def slug
+    self.slug = self.name.gsub(' ', '-').gsub('é', 'e').downcase
+  end
+
 end
